@@ -1,0 +1,7 @@
+.div-bordes{
+    border:1px solid rgba(0, 0, 0, 0.192);
+}
+
+input{
+    text-transform: uppercase;
+}

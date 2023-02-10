@@ -61,7 +61,11 @@
             <h5>Nuevo Cliente</h5>
           </div>
           <div class="col-1">
-            <button type="button" class="btn btn-success" @click="GuardarEmpleado">
+            {{estatusSeleccionado}}
+            <button type="button" class="btn btn-success" @click="GuardarEmpleado" :disabled="txtRFC == '' || txtNombreEmpleado == '' ||
+            txtApellidoMaterno == '' || txtApellidoPaterno == '' || txtCodigoPostal == '' || txtPais =='' || estatusSeleccionado =='' ||
+            txtEstado =='' || txtMunicipio =='' || txtColonia == '' || txtCalle =='' || txtNumeroExterior =='' || txtNombreContacto =='' || 
+            txtTelefono =='' || txtTelMovil == '' ||txtEmail ==''">
               <i class="fa-solid fa-save"></i>
             </button>
           </div>
@@ -87,19 +91,25 @@
             <div class="row">
                 <div class="col-6">
                     <div class="form-group" >
-                        <label for="txtUsoCFDI">Uso CFDI</label>
-                        <input type="text" class="form-control" id="txtUsoCFDI" v-model="txtUsoCFDI" maxlength="30">
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group" >
                         <label for="txtApellidoPaterno">Apellido Paterno</label>
                         <input type="text" class="form-control" id="txtApellidoPaterno" v-model="txtApellidoPaterno" maxlength="30">
                     </div>
                 </div>
+                <div class="col-6">
+                  <div class="form-group" >
+                      <label for="txtApellidoMaterno">Apellido Materno</label>
+                      <input type="text" class="form-control" id="txtApellidoMaterno" v-model="txtApellidoMaterno"  maxlength="30">
+                  </div>
+              </div>
             </div>
 
             <div class="row">
+                <div class="col-6">
+                  <div class="form-group" >
+                      <label for="txtUsoCFDI">Uso CFDI</label>
+                      <input type="text" class="form-control" id="txtUsoCFDI" v-model="txtUsoCFDI" maxlength="30">
+                  </div>
+                </div>
                 <div class="col-6">
                     <div class="form-group" >
                         <label for="txtEstatus">Estatus</label>
@@ -107,12 +117,6 @@
                           <option v-for="option in estatus" :value="option.value">
                           {{ option.text }}
                       </select>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group" >
-                        <label for="txtApellidoMaterno">Apellido Materno</label>
-                        <input type="text" class="form-control" id="txtApellidoMaterno" v-model="txtApellidoMaterno"  maxlength="30">
                     </div>
                 </div>
             </div>
@@ -159,7 +163,7 @@
               <div class="col-6">
                   <div class="form-group" >
                       <label for="txtMunicipio">Municipio</label>
-                      <input type="text" class="form-control" id="txtMunicipio" maxlength="30">
+                      <input type="text" class="form-control" id="txtMunicipio" v-model="txtMunicipio" maxlength="30">
                   </div>
               </div>
             </div>
@@ -181,7 +185,7 @@
             <div class="row mb-2" >
               <div class="col-6">
                 <div class="form-group" >
-                    <label for="txtNumeroExterior">Número Exterior</label>
+                    <label for="txtNumeroExterior">Número Exterior</label> {{txtNumeroExterior}}
                     <input type="text" class="form-control" id="txtNumeroExterior" v-model="txtNumeroExterior" @keypress="isNumber($event)" maxlength="5">
                 </div>
               </div>
@@ -207,7 +211,7 @@
               <div class="col-6">
                   <div class="form-group" >
                       <label for="txtTelMovil">Teléfono Móvil</label>
-                      <input type="text" class="form-control" id="txtTelMovil" @keypress="isNumber($event)" maxlength="13">
+                      <input type="text" class="form-control" id="txtTelMovil" v-model="txtTelMovil" @keypress="isNumber($event)" maxlength="13">
                   </div>
               </div>
               <div class="col-6">

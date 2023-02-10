@@ -61,7 +61,6 @@
             <h5>Nuevo Cliente</h5>
           </div>
           <div class="col-1">
-            {{estatusSeleccionado}}
             <button type="button" class="btn btn-success" @click="GuardaCliente" :disabled="txtRFC == '' || txtNombreEmpleado == '' ||
             txtApellidoMaterno == '' || txtApellidoPaterno == '' || txtCodigoPostal == '' || txtPais =='' || estatusSeleccionado =='' ||
             txtEstado =='' || txtMunicipio =='' || txtColonia == '' || txtCalle =='' || txtNumeroExterior =='' || txtNombreContacto =='' || 
@@ -257,8 +256,9 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="assets/js/scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+  <script src="assets/bootstrap-vue/2.23.0/bootstrap-vue.min.js"></script>
+  <script src="assets/js/bvue.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

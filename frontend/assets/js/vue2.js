@@ -1,8 +1,7 @@
-var vue3 = ({ createApp } = Vue);
-
-createApp({
-  setup() {
-    let users = [
+var app = new Vue({
+  el: "#app",
+  data: {
+    users: [
       {
         id: 6,
         Nombre: "Frank",
@@ -35,61 +34,51 @@ createApp({
         Correo: "User",
         Telefono: "1234567890",
       },
-    ];
-    let clientes = [];
-    
-    return {
-      users,
-      clientes
-    };
-  },
-  data() {
-    return {
-      
-      txtNombreEmpleado: "",
-      txtRFC: "",
-      txtUsoCFDI: "",
-      txtApellidoPaterno: "",
-      txtApellidoMaterno: "",
-      txtEstatus: "",
-      txtRazonSocial: "",
-      txtNombreComercial: "",
-      txtCodigoPostal: "",
-      txtPais: "",
-      txtEstado: "",
-      txtMunicipio: "",
-      txtColonia: "",
-      txtCalle: "",
-      txtNumeroExterior: "",
-      txtNombreContacto: "",
-      txtTelefono: "",
-      txtTelMovil: "",
-      txtEmail: "",
-      txtObservaciones: "",
-      txtTipoPersona: "",
-      txtColonia: "",
-      IdEmpleado: 0,
-      estatusSeleccionado: 0,
-      estatusNuevo: 0,
-      estatus: [
-        {
-          value: "0",
-          text: "Eliga el estatus",
-        },
-        {
-          value: "Activo",
-          text: "Activo",
-        },
-        {
-          value: "Inactivo",
-          text: "Inactivo",
-        },
-        {
-          value: "Baja",
-          text: "Baja",
-        },
-      ],
-    };
+    ],
+    clientes: [],
+    txtNombreEmpleado: "",
+    txtRFC: "",
+    txtUsoCFDI: "",
+    txtApellidoPaterno: "",
+    txtApellidoMaterno: "",
+    txtEstatus: "",
+    txtRazonSocial: "",
+    txtNombreComercial: "",
+    txtCodigoPostal: "",
+    txtPais: "",
+    txtEstado: "",
+    txtMunicipio: "",
+    txtColonia: "",
+    txtCalle: "",
+    txtNumeroExterior: "",
+    txtNombreContacto: "",
+    txtTelefono: "",
+    txtTelMovil: "",
+    txtEmail: "",
+    txtObservaciones: "",
+    txtTipoPersona: "",
+    txtColonia: "",
+    IdEmpleado: 0,
+    estatusSeleccionado: 0,
+    estatusNuevo: 0,
+    estatus: [
+      {
+        value: "0",
+        text: "Eliga el estatus",
+      },
+      {
+        value: "Activo",
+        text: "Activo",
+      },
+      {
+        value: "Inactivo",
+        text: "Inactivo",
+      },
+      {
+        value: "Baja",
+        text: "Baja",
+      },
+    ],
   },
   methods: {
     TipoPersona: function (RFC) {
@@ -132,7 +121,7 @@ createApp({
         .then(function (response) {
           if (response) {
             clientes = response.data;
-            console.log(clientes)
+            console.log(clientes);
           } else {
             Swal.fire({
               position: "center",
@@ -248,16 +237,15 @@ createApp({
         if (result.isConfirmed) {
           axios
             .delete(
-              "http://localhost/crud-click/backend/api.clickbalance/public/borracliente/" + id
+              "http://localhost/crud-click/backend/api.clickbalance/public/borracliente/" +
+                id
             )
             .then(function (response) {
               Swal.fire({
                 position: "center",
                 icon: "success",
                 title: "Bien hecho!",
-                text:
-                  "Se eliminó correctamente el cliente con ID: " +
-                  id,
+                text: "Se eliminó correctamente el cliente con ID: " + id,
                 showConfirmButton: true,
               });
               this.txtNombreEmpleado.value = "";
@@ -275,7 +263,8 @@ createApp({
     ActualizarCliente: function () {
       axios
         .put(
-          "http://localhost/crud-click/backend/api.clickbalance/public/actualizacliente/" + this.IdEmpleado,
+          "http://localhost/crud-click/backend/api.clickbalance/public/actualizacliente/" +
+            this.IdEmpleado,
           {
             Nombre: this.txtNombreEmpleado,
             Apellido: this.txtApellido,
@@ -304,5 +293,4 @@ createApp({
   mounted() {
     this.getClientes();
   },
-  created() {},
-}).mount("#app");
+});

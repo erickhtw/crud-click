@@ -76,7 +76,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="user in users">
+                <tr v-for="user in clientes">
                   <td>{{user.id}}</td>
                   <td>{{user.Nombre}} {{user.lastName}}</td>
                   <td>{{user.NombreComercial}}</td>
@@ -103,20 +103,19 @@
           </div>
         </div>
       </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="container">
-              <div class="row pr-3 pt-2  mb-3">
-                <div class="col-12">
-                  <div class="row">
+      <!-- Modal -->
+      <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row pr-3 pt-2  mb-3">
+                  <div class="col-12">
+                    <div class="row">
                       <div class="col-6">
                         <div class="form-group" >
                             <label for="txtRFC">RFC</label>
@@ -283,21 +282,22 @@
                   txtTelefono =='' || txtTelMovil == '' ||txtEmail ==''">
                     <i class="fa-solid fa-save"></i> Actualizar
                   </button>
-         </div>
+          </div>
         </div>
       </div>
+      <pre>{{$data}}</pre>
     </div>
+  </div>
+    <footer class="bg-light text-center text-lg-start mt-4">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Erick Maciel
+        <a class="text-dark" href="https://www.facebook.com/erickmacielsoto/"
+          >Facebook <i class="fa-brands fa-facebook-f"></i
+        ></a>
+      </div>
+    </footer>
   </body>
-</div>
-  <footer class="bg-light text-center text-lg-start mt-4">
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-      © 2023 Erick Maciel
-      <a class="text-dark" href="https://www.facebook.com/erickmacielsoto/"
-        >Facebook <i class="fa-brands fa-facebook-f"></i
-      ></a>
-    </div>
-  </footer>
-</div>
+  
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -311,14 +311,18 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
+  <link rel="stylesheet" href="assets/bootstrap-vue/2.23.0/bootstrap-vue.min.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="assets/js/scripts.js"></script>
+  <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+  <script src="assets/bootstrap-vue/2.23.0/bootstrap-vue.min.js"></script>
+  <script src="assets/js/bvue.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"
   ></script>
+  
 </html>

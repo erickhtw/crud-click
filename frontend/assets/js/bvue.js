@@ -1,40 +1,6 @@
 var vue = new Vue({
     el: "#app",
     data: {
-      users: [
-        {
-          id: 6,
-          Nombre: "Frank",
-          NombreComercial: "Murphy",
-          rfc: "frank.murphy@test.com",
-          Correo: "User",
-          Telefono: "1234567890",
-        },
-        {
-          id: 2,
-          Nombre: "Vic",
-          NombreComercial: "Reynolds",
-          rfc: "vic.reynolds@test.com",
-          Correo: "Admin",
-          Telefono: "1234567890",
-        },
-        {
-          id: 3,
-          Nombre: "Gina",
-          NombreComercial: "Jabowski",
-          rfc: "gina.jabowski@test.com",
-          Correo: "Admin",
-          Telefono: "1234567890",
-        },
-        {
-          id: 4,
-          Nombre: "Jessi",
-          NombreComercial: "Glaser",
-          rfc: "jessi.glaser@test.com",
-          Correo: "User",
-          Telefono: "1234567890",
-        },
-      ],
       clientes: [],
       txtNombreEmpleado: "",
       txtRFC: "",

@@ -2,39 +2,39 @@ var vue3 = ({ createApp } = Vue);
 
 createApp({
   setup() {
-    let users = [{}
-      // {
-      //   id: 1,
-      //   Nombre: "Frank",
-      //   NombreComercial: "Murphy",
-      //   rfc: "frank.murphy@test.com",
-      //   Correo: "User",
-      //   Telefono: "1234567890",
-      // },
-      // {
-      //   id: 2,
-      //   Nombre: "Vic",
-      //   NombreComercial: "Reynolds",
-      //   rfc: "vic.reynolds@test.com",
-      //   Correo: "Admin",
-      //   Telefono: "1234567890",
-      // },
-      // {
-      //   id: 3,
-      //   Nombre: "Gina",
-      //   NombreComercial: "Jabowski",
-      //   rfc: "gina.jabowski@test.com",
-      //   Correo: "Admin",
-      //   Telefono: "1234567890",
-      // },
-      // {
-      //   id: 4,
-      //   Nombre: "Jessi",
-      //   NombreComercial: "Glaser",
-      //   rfc: "jessi.glaser@test.com",
-      //   Correo: "User",
-      //   Telefono: "1234567890",
-      // },
+    let users = [
+      {
+        id: 1,
+        Nombre: "Frank",
+        NombreComercial: "Murphy",
+        rfc: "frank.murphy@test.com",
+        Correo: "User",
+        Telefono: "1234567890",
+      },
+      {
+        id: 2,
+        Nombre: "Vic",
+        NombreComercial: "Reynolds",
+        rfc: "vic.reynolds@test.com",
+        Correo: "Admin",
+        Telefono: "1234567890",
+      },
+      {
+        id: 3,
+        Nombre: "Gina",
+        NombreComercial: "Jabowski",
+        rfc: "gina.jabowski@test.com",
+        Correo: "Admin",
+        Telefono: "1234567890",
+      },
+      {
+        id: 4,
+        Nombre: "Jessi",
+        NombreComercial: "Glaser",
+        rfc: "jessi.glaser@test.com",
+        Correo: "User",
+        Telefono: "1234567890",
+      },
     ];
 
     return {
@@ -66,6 +66,7 @@ createApp({
       txtObservaciones: "",
       txtTipoPersona: "",
       txtColonia: "",
+      IdEmpleado: 0,
       estatusSeleccionado: 0,
       estatusNuevo: 0,
       estatus: [
@@ -146,6 +147,7 @@ createApp({
         });
     },
     getCliente: function (id) {
+      this.IdEmpleado = id;
       axios
         .get(
           "http://localhost/crud-click/backend/api.clickbalance/public/getclienteId/" +
@@ -188,7 +190,7 @@ createApp({
           console.log(error);
         });
     },
-    GuardarEmpleado: function () {
+    GuardaCliente: function () {
       axios
         .patch(
           "http://localhost/crud-click/backend/api.clickbalance/public/guardarcliente/",
@@ -233,9 +235,9 @@ createApp({
           console.log(error);
         });
     },
-    EliminarCliente: function () {
+    EliminarCliente: function (id) {
       Swal.fire({
-        title: "¿Desea eliminar el empleado?",
+        title: "¿Desea eliminar al cliente?",
         showDenyButton: true,
         showCancelButton: false,
         confirmButtonText: "Sí",
@@ -244,8 +246,7 @@ createApp({
         if (result.isConfirmed) {
           axios
             .delete(
-              "http://localhost/crud/backend/api.coppel/public/deleteempleado/" +
-                this.txtNoEmpleado
+              "http://localhost/crud-click/backend/api.clickbalance/public/borracliente/" + id
             )
             .then(function (response) {
               Swal.fire({
@@ -253,8 +254,8 @@ createApp({
                 icon: "success",
                 title: "Bien hecho!",
                 text:
-                  "Se eliminó correctamente el empleado con número de empleado: " +
-                  this.txtNoEmpleado.value,
+                  "Se eliminó correctamente el cliente con ID: " +
+                  id,
                 showConfirmButton: true,
               });
               this.txtNombreEmpleado.value = "";
@@ -272,8 +273,7 @@ createApp({
     ActualizarCliente: function () {
       axios
         .put(
-          "http://localhost/crud/backend/api.coppel/public/putempleado/" +
-            this.txtNoEmpleado,
+          "http://localhost/crud-click/backend/api.clickbalance/public/actualizacliente/" + this.IdEmpleado,
           {
             Nombre: this.txtNombreEmpleado,
             Apellido: this.txtApellido,
@@ -286,8 +286,8 @@ createApp({
             icon: "success",
             title: "Bien hecho!",
             text:
-              "Se actualizó correctamente el empleado con número de empleado: " +
-              this.txtNoEmpleado.value,
+              "Se actualizó correctamente el cliente con el Id " +
+              this.IdEmpleado,
             showConfirmButton: true,
           });
           this.txtNombreEmpleado.value = "";

@@ -76,9 +76,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="user in nojala">
+                <tr v-for="user in users">
                   <td>{{user.id}}</td>
-                  <td>{{user.Nombre}}</td>
+                  <td>{{user.Nombre}} {{user.lastName}}</td>
                   <td>{{user.NombreComercial}}</td>
                   <td>{{user.rfc}}</td>
                   <td>{{user.Correo}}</td>
@@ -155,14 +155,17 @@
                       </div>
                       <div class="col-6">
                           <div class="form-group" >
-                              <label for="estatusNuevo">Estatus</label>
-                              <input type="text" class="form-control" id="estatusNuevo" v-model="estatusNuevo" maxlength="30">
+                              <label for="txtEstatus">Estatus</label>
+                              <select class="form-select" v-model="estatusSeleccionado">
+                                <option v-for="option in estatus" :value="option.value">
+                                {{ option.text }}
+                            </select>
                           </div>
                       </div>
                   </div>
       
                   <!--Personas Morales-->
-                  <div class="row">
+                  <div class="row" v-if="txtTipoPersona == 'Moral'">
                     <div class="col-6">
                         <div class="form-group" >
                             <label for="txtRazonSocial">Razón Social</label>
@@ -181,7 +184,7 @@
                     <h4>Dirección</h4>
                     <div class="col-6">
                         <div class="form-group" >
-                            <label for="txtCodigoPostal">Código Postal</label>{{txtCodigoPostal}}
+                            <label for="txtCodigoPostal">Código Postal</label>
                             <input type="text" class="form-control" id="txtCodigoPostal" v-model="txtCodigoPostal" @keypress="isNumber($event)" maxlength="6">
                         </div>
                     </div>
@@ -274,7 +277,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-circle-xmark"></i> Cerrar</button>
-            <button type="button" class="btn btn-success" @click="GuardarEmpleado" :disabled="txtRFC == '' || txtNombreEmpleado == '' ||
+            <button type="button" class="btn btn-success" @click="ActualizarCliente()" :disabled="txtRFC == '' || txtNombreEmpleado == '' ||
                   txtApellidoMaterno == '' || txtApellidoPaterno == '' || txtCodigoPostal == '' || txtPais =='' || estatusSeleccionado =='' ||
                   txtEstado =='' || txtMunicipio =='' || txtColonia == '' || txtCalle =='' || txtNumeroExterior =='' || txtNombreContacto =='' || 
                   txtTelefono =='' || txtTelMovil == '' ||txtEmail ==''">

@@ -38,6 +38,11 @@ class usuariosController extends Controller
 
     //actualizar datos cliente
     public function actualizacliente(Request $request, $id){
+        if($request->input('RazonSocial') == ''){
+            $request->merge(['RazonSocial' => 'N/A']);
+            $request->merge(['NombreComercial' => 'N/A']);
+            $request->merge(['Observaciones' => 'N/A']);
+        }
         $empleado = Usuarios::find($id)->update($request->all());
         return response()->json($empleado);
     }

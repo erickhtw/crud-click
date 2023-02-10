@@ -43,7 +43,6 @@ createApp({
   },
   data() {
     return {
-      nojala: {},
       txtNombreEmpleado: "",
       txtRFC: "",
       txtUsoCFDI: "",
@@ -129,8 +128,6 @@ createApp({
         )
         .then(function (response) {
           if (response) {
-            this.nojala = response.data;
-            console.log(this.nojala);
           } else {
             Swal.fire({
               position: "center",
